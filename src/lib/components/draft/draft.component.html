@@ -1,26 +1,40 @@
-<div style="padding:1rem;max-width:900px;margin:0 auto;">
+<div class="page">
     <h2>Draft a TI Squad</h2>
     <p>Roll a random squad (players who played at TI historically) and add them to your team.</p>
 
-    <div style="display:flex;gap:1rem;align-items:center;margin:1rem 0;">
+    <div class="controls">
         <button (click)="rollSquad()">Roll Squad</button>
         <button (click)="saveTeam()" [disabled]="team.length===0">Save Team & Go to Simulator</button>
-        <span *ngIf="lastSeed">Seed: {{ lastSeed }}</span>
+        @if (lastSeed) {
+            <span>Seed: {{ lastSeed }}</span>
+        }
     </div>
 
-    <div *ngIf="squad.length">
-        <h3 *ngIf="rolledTeamName">Rolled Team: {{ rolledTeamName }} <small *ngIf="rolledTeamYear">({{ rolledTeamYear }})</small></h3>
-        <h3 *ngIf="!rolledTeamName">Rolled Squad</h3>
-        <ul>
-    <li *ngFor="let p of squad">{{p.role}} — <span *ngIf="p.flag">{{p.flag}}&nbsp;</span>{{p.name}} <small *ngIf="p.country">— {{p.country}}</small></li>
-        </ul>
-        <button (click)="addToTeam()">Add All to Team</button>
-    </div>
+    @if (squad.length) {
+        <div>
+            @if (rolledTeamName) {
+                <h3>Rolled Team: {{ rolledTeamName }} @if (rolledTeamYear) { <small>({{ rolledTeamYear }})</small> }</h3>
+            }
+            @if (!rolledTeamName) {
+                <h3>Rolled Squad</h3>
+            }
+            <ul>
+                @for (p of squad; track p.id) {
+                    <li>{{p.role}} — @if (p.flag) { <span>{{p.flag}}&nbsp;</span> }{{p.name}} </li>
+                }
+            </ul>
+            <button (click)="addToTeam()">Add All to Team</button>
+        </div>
+    }
 
-    <div *ngIf="team.length">
-        <h3>Your Team</h3>
-        <ol>
-    <li *ngFor="let p of team"> <span *ngIf="p.flag">{{p.flag}}&nbsp;</span>{{p.name}} — {{p.country}} — {{p.role}}</li>
-        </ol>
-    </div>
+    @if (team.length) {
+        <div>
+            <h3>Your Team</h3>
+            <ol>
+                @for (p of team; track p.id) {
+                    <li> @if (p.flag) { <span>{{p.flag}}&nbsp;</span> } {{p.name}} — {{p.country}} — {{p.role}}</li>
+                }
+            </ol>
+        </div>
+    }
 </div>

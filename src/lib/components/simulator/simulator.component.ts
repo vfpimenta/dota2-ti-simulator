@@ -6,7 +6,8 @@ import { TeamService } from '../../services/team.service';
   standalone: true,
   selector: 'app-simulator',
   imports: [CommonModule],
-  templateUrl: './simulator.component.html'
+  templateUrl: './simulator.component.html',
+  styleUrls: ['./simulator.component.scss']
 })
 export class SimulatorComponent {
   team: any[] = [];

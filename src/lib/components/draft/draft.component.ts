@@ -9,6 +9,7 @@ import { dota2Ti2011 } from '../../../data/dota2-ti-2011';
   selector: 'app-draft',
   imports: [CommonModule],
   templateUrl: './draft.component.html',
+  styleUrls: ['./draft.component.scss']
 })
 export class DraftComponent {
   squad: any[] = [];
@@ -43,8 +44,20 @@ export class DraftComponent {
     'france': 'FR',
     'malaysia': 'MY',
     'china': 'CN',
-    'macau': 'MO'
+    'macau': 'MO',
+    'philippines': 'PH',
+    'singapore': 'SG',
+    'czechia': 'CZ',
+    'czech republic': 'CZ',
+    'slovakia': 'SK',
+    'croatia': 'HR',
+    'romania': 'RO',
+    'sweden': 'SE',
+    'canada': 'CA',
+    'germany': 'DE'
   };
+
+
 
   constructor(private teamService: TeamService, private router: Router) {
     this.team = this.teamService.getTeam();

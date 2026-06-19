@@ -24,5 +24,4 @@ export interface Participant extends Team {
     };
     coaches?: Player[];
     qualification: QualificationType;
-    year: number;
 }

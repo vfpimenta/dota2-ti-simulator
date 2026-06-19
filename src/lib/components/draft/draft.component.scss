@@ -1,0 +1,21 @@
+.page {
+  padding: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+/* small utilities used in template */
+.controls span {
+  font-size: 0.9rem;
+}
+
+ul, ol {
+  margin-left: 1.25rem;
+}

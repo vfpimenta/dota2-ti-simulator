@@ -1,22 +1,30 @@
-<div style="padding:1rem;max-width:900px;margin:0 auto;">
+<div class="page">
     <h2>TI Simulator</h2>
     <p>Simulate a random TI run for your team. Results are randomized but use player strength.</p>
 
-    <div *ngIf="team.length===0">
-        <p>No team yet. Go to Draft to create one.</p>
-    </div>
+        @if (team.length===0) {
+            <div>
+                <p>No team yet. Go to Draft to create one.</p>
+            </div>
+        }
 
-    <div *ngIf="team.length">
-        <h3>Your Team</h3>
-        <ol>
-        <li *ngFor="let p of team">{{p.name}} — {{p.role}} — Power: {{p.power}}</li>
-        </ol>
-        <div style="margin-top:1rem;">
-        <button (click)="runTournament()">Run Tournament</button>
-        </div>
-        <div *ngIf="result">
-        <h4>Result</h4>
-        <p>{{result}}</p>
-        </div>
-    </div>
+        @if (team.length) {
+            <div>
+                <h3>Your Team</h3>
+                <ol>
+                    @for (p of team; track p.id) {
+                        <li>{{p.name}} — {{p.role}} — Power: {{p.power}}</li>
+                    }
+                </ol>
+                <div class="mt">
+                    <button (click)="runTournament()">Run Tournament</button>
+                </div>
+                @if (result) {
+                    <div>
+                        <h4>Result</h4>
+                        <p>{{result}}</p>
+                    </div>
+                }
+            </div>
+        }
 </div>
