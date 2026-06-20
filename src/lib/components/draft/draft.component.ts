@@ -111,6 +111,10 @@ export class DraftComponent implements OnInit {
     return this.teamSlots.some(s => s.role === role && !!s.player);
   }
 
+  getPowerSlots() {
+    return this.teamSlots.reduce((total, slot) => total + (slot.player ? slot.player.skill : 0), 0);
+  }
+
   saveTeam() {
     this.teamService.setTeam(this.team);
     this.router.navigate(['/simulator']);

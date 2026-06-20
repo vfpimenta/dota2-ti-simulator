@@ -114,16 +114,33 @@
 .player-name { font-size: 0.95rem; color: #111; }
 .flag { margin-right: 0.35rem; }
 
-.player-actions { margin-left: 0.75rem; }
-.btn-add {
-  background: #ffffff;
-  border: 1px solid #1f1f1f;
-  padding: 0.35rem 0.6rem;
-  font-weight: 700;
-  border-radius: 3px;
+/* Make the entire player row look and behave like a clickable control */
+.player-card[tabindex] {
   cursor: pointer;
+  transition: background 0.12s ease, transform 0.06s ease;
 }
-.btn-add[disabled] { opacity: 0.45; cursor: default; }
+.player-card[tabindex]:hover:not(.disabled),
+.player-card[tabindex]:focus:not(.disabled) {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+/* Disabled state mirrors previous disabled button opacity and removes pointer interactions */
+.player-card.disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.player-actions { display: none; }
+
+/* ELO badge aligned to the right */
+.player-elo {
+  font-weight: 700;
+  color: #6b6b6b;
+  margin-left: 1rem;
+  min-width: 48px;
+  text-align: right;
+}
 
 /* Center: pitch */
 

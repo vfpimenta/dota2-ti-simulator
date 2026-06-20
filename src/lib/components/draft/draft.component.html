@@ -35,7 +35,12 @@
                 <div class="squad-list">
                     <ul>
                         @for (player of squad; track player.id) {
-                            <li class="player-card">
+                            <li class="player-card"
+                                (click)="pickPlayerById(player.id)"
+                                (keydown.enter)="pickPlayerById(player.id)"
+                                [class.disabled]="pickedFromCurrent || hasRole(player.role)"
+                                [attr.aria-disabled]="pickedFromCurrent || hasRole(player.role)"
+                                tabindex="0">
                                 <div class="player-meta">
                                     <div class="player-role">{{player.role}}</div>
                                     <div class="player-name">
@@ -44,9 +49,7 @@
                                         } {{player.id}}
                                     </div>
                                 </div>
-                                <div class="player-actions">
-                                    <button class="btn-add" (click)="pickPlayerById(player.id)" [disabled]="pickedFromCurrent || hasRole(player.role)">Add</button>
-                                </div>
+                                <div class="player-elo">{{ player.skill }}</div>
                             </li>
                         }
                     </ul>
@@ -58,7 +61,7 @@
             <div class="box-score">
                 <div class="box-header">
                     <div class="score">Your Team</div>
-                    <div class="attack"><span class="value">22</span> <span class="label">Attack</span></div>
+                    <div class="attack"><span class="value">{{ getPowerSlots() }}</span> <span class="label">Power</span></div>
                 </div>
 
                 <div class="squad-list">
