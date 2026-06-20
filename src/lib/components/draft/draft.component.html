@@ -1,40 +1,88 @@
 <div class="page">
-    <h2>Draft a TI Squad</h2>
-    <p>Roll a random squad (players who played at TI historically) and add them to your team.</p>
+    <div class="draft-top">
+        <div>
+            <h2 class="title">Draft a TI Squad</h2>
+            <p class="subtitle">Roll a random squad (players who played at TI historically) and add them to your team.</p>
+        </div>
 
-    <div class="controls">
-        <button (click)="rollSquad()">Roll Squad</button>
-        <button (click)="saveTeam()" [disabled]="team.length===0">Save Team & Go to Simulator</button>
-        @if (lastSeed) {
-            <span>Seed: {{ lastSeed }}</span>
-        }
+        <div class="controls">
+            <button (click)="rollSquad()" [disabled]="squad.length && !pickedFromCurrent">Roll Squad</button>
+            <button (click)="saveTeam()" [disabled]="team.length===0">Save Team & Go to Simulator</button>
+            @if (lastSeed) {
+                <span>Seed: {{ lastSeed }}</span>
+            }
+        </div>
     </div>
 
-    @if (squad.length) {
-        <div>
-            @if (rolledTeamName) {
-                <h3>Rolled Team: {{ rolledTeamName }} @if (rolledTeamYear) { <small>({{ rolledTeamYear }})</small> }</h3>
-            }
-            @if (!rolledTeamName) {
-                <h3>Rolled Squad</h3>
-            }
-            <ul>
-                @for (p of squad; track p.id) {
-                    <li>{{p.role}} — @if (p.flag) { <span>{{p.flag}}&nbsp;</span> }{{p.name}} </li>
-                }
-            </ul>
-            <button (click)="addToTeam()">Add All to Team</button>
-        </div>
-    }
+    <div class="draft-container">
+        <aside class="draft-left">
+            @if (squad.length) {
+                <div class="rolled-header">
+                    @if (rolledTeamName) {
+                        <h3>Rolled Team: {{ rolledTeamName }} 
+                            @if (rolledTeamYear) { 
+                                <small>
+                                    ({{ rolledTeamYear }})
+                                </small> 
+                            }
+                        </h3>
+                    }
+                    @if (!rolledTeamName) {
+                        <h3>Rolled Squad</h3>
+                    }
+                </div>
 
-    @if (team.length) {
-        <div>
-            <h3>Your Team</h3>
-            <ol>
-                @for (p of team; track p.id) {
-                    <li> @if (p.flag) { <span>{{p.flag}}&nbsp;</span> } {{p.name}} — {{p.country}} — {{p.role}}</li>
-                }
-            </ol>
-        </div>
-    }
+                <div class="squad-list">
+                    <ul>
+                        @for (p of squad; track p.id) {
+                            <li class="player-card">
+                                <div class="player-meta">
+                                    <div class="player-role">{{p.role}}</div>
+                                    <div class="player-name">
+                                        @if (p.flag) { 
+                                            <span class="flag">{{p.flag}}</span> 
+                                        } {{p.name}}
+                                    </div>
+                                </div>
+                                <div class="player-actions">
+                                    <button class="btn-add" (click)="pickPlayerById(p.id)" [disabled]="pickedFromCurrent || hasRole(p.role)">Add</button>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </aside>
+
+        <aside class="draft-right">
+            <div class="box-score">
+                <div class="box-header">
+                    <div class="score">Your Team</div>
+                    <div class="attack"><span class="value">22</span> <span class="label">Attack</span></div>
+                </div>
+
+                <div class="squad-list">
+                    <ul>
+                        @for (slot of teamSlots; track slot.role) {
+                            <li class="player-card">
+                                <div class="player-meta">
+                                    <div class="player-role">{{slot.role}}</div>
+                                    @if (slot.player) {
+                                        <div class="player-name">
+                                            @if (slot.player.flag) { 
+                                                <span class="flag">{{slot.player.flag}}</span> 
+                                            } 
+                                            {{slot.player.name}}
+                                        </div>
+                                    } @else {
+                                        <em>Open</em>
+                                    }
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    </div>
 </div>
