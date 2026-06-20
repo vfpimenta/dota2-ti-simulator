@@ -1,4 +1,4 @@
-import { Player } from "./player.model";
+import { Competitor, Player } from "./player.model";
 
 export interface Team {
   id: string;
@@ -16,11 +16,11 @@ export enum QualificationType {
  */
 export interface Participant extends Team {
     roster: {
-        pos1: {player: Player, elo: number};
-        pos2: {player: Player, elo: number};
-        pos3: {player: Player, elo: number};
-        pos4: {player: Player, elo: number};
-        pos5: {player: Player, elo: number};
+        pos1: Competitor;
+        pos2: Competitor;
+        pos3: Competitor;
+        pos4: Competitor;
+        pos5: Competitor;
     };
     coaches?: Player[];
     qualification: QualificationType;
