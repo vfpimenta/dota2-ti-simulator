@@ -13,6 +13,8 @@ export interface Player {
 };
 
 export interface Competitor extends Player {
+  /** Player's alternative ID (if any) */
+  altId?: string;
   /** Player's preferred role */
   role: Role;
   /** Raw skill rating (0-100), how strong a player is */

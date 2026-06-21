@@ -7,6 +7,7 @@ import { dota2Ti2011 } from '../../../data/dota2-ti-2011';
 import { Competitor, Player } from '../../models/player.model';
 import { FlagPipe } from '../../pipes/flag.pipe';
 import { Participant } from '../../models/team.model';
+import { dota2Ti2012 } from '../../../data/dota2-ti-2012';
 
 @Component({
   standalone: true,
@@ -67,14 +68,15 @@ export class DraftComponent implements OnInit {
     this.pickedFromCurrent = false;
 
     // Pick a random participant team from the historical TI2011 event
-    const teams = dota2Ti2011.teams;
-    if (!teams || teams.length === 0) return;
-    const idx = Math.floor(Math.random() * teams.length);
-    const participant = teams[idx];
+    const events = [ dota2Ti2011, dota2Ti2012 ];
+    const idx = Math.floor(Math.random() * events.length);
+    const event = events[idx];
+    const participantIdx = Math.floor(Math.random() * event.teams.length);
+    const participant = event.teams[participantIdx];
 
     // store team name/year for the UI
     this.rolledTeamName = participant.name;
-    this.rolledTeamYear = dota2Ti2011.year;
+    this.rolledTeamYear = event.year;
 
     // Map the participant roster (pos1..pos5) into the squad format used by the UI
     this.squad = Object.values(participant.roster);
@@ -109,6 +111,11 @@ export class DraftComponent implements OnInit {
   hasRole(role: string) {
     if (!role) return false;
     return this.teamSlots.some(s => s.role === role && !!s.player);
+  }
+
+  hasPlayer(player: Competitor) {
+    if (!player) return false;
+    return this.teamSlots.some(s => s.player?.id === player.id);
   }
 
   getPowerSlots() {

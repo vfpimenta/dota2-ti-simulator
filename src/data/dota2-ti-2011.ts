@@ -1,17 +1,17 @@
 import { Participant, QualificationType } from "../lib/models/team.model";
 import { Event } from "../lib/models/event.model";
-import { Competitor, Role } from "../lib/models/player.model";
+import { Role } from "../lib/models/player.model";
 import * as players from "./players";
 
 const mym: Participant = {
     id: "MYM",
     name: "Meet Your Makers",
     roster: {
-        pos1: { ...players.misery, role: Role.CARRY, skill: 69, stability: 1, greed: 0.4 },
-        pos2: { ...players.mania, role: Role.MID, skill: 55, stability: 0.9, greed: 0.4 },
+        pos1: { ...players.misery, role: Role.CARRY, skill: 61, stability: 0.8, greed: 0.4 },
+        pos2: { ...players.mania, role: Role.MID, skill: 52, stability: 0.9, greed: 0.4 },
         pos3: { ...players.playmate, role: Role.OFFLANE, skill: 52, stability: 0.8, greed: 0.4 },
-        pos4: { ...players.maelk, role: Role.SOFT_SUPPORT, skill: 60, stability: 0.9, greed: 0.4 },
-        pos5: { ...players.demon, role: Role.HARD_SUPPORT, skill: 57, stability: 0.7, greed: 0.4 },
+        pos4: { ...players.maelk, role: Role.SOFT_SUPPORT, skill: 55, stability: 0.5, greed: 0.4 },
+        pos5: { ...players.demon, role: Role.HARD_SUPPORT, skill: 44, stability: 0.6, greed: 0.4 },
     },
     qualification: QualificationType.DIRECT_INVITE,
 };
@@ -98,10 +98,10 @@ const ig: Participant = {
     id: "iG",
     name: "Invictus Gaming",
     roster: {
-        pos1: { ...players.zhou, role: Role.CARRY, skill: 64, stability: 0.9, greed: 0.5 },
-        pos2: { ...players.ferrari_430, role: Role.MID, skill: 70, stability: 1, greed: 0.6 },
+        pos1: { ...players.zhou, role: Role.CARRY, skill: 70, stability: 0.9, greed: 0.5 },
+        pos2: { ...players.ferrari_430, role: Role.MID, skill: 77, stability: 1, greed: 0.6 },
         pos3: { ...players.xiao8, role: Role.OFFLANE, skill: 61, stability: 0.7, greed: 0.3 },
-        pos4: { ...players.sansheng, role: Role.SOFT_SUPPORT, skill: 60, stability: 0.8, greed: 0.4 },
+        pos4: { ...players.sansheng, role: Role.SOFT_SUPPORT, skill: 58, stability: 0.8, greed: 0.4 },
         pos5: { ...players.ddc, role: Role.HARD_SUPPORT, skill: 62, stability: 0.8, greed: 0.4 },
     },
     qualification: QualificationType.DIRECT_INVITE,
@@ -152,8 +152,8 @@ const okNirvanaCn: Participant = {
     roster: {
         pos1: { ...players.insence, role: Role.CARRY, skill: 18, stability: 0.6, greed: 0.5 },
         pos2: { ...players.ksssssss, role: Role.MID, skill: 15, stability: 0.6, greed: 0.6 },
-        pos3: { ...players.banana, role: Role.OFFLANE, skill: 26, stability: 0.7, greed: 0.2 },
-        pos4: { ...players.yao, role: Role.SOFT_SUPPORT, skill: 20, stability: 0.3, greed: 0.2 },
+        pos3: { ...players.banana, role: Role.OFFLANE, skill: 37, stability: 0.7, greed: 0.2 },
+        pos4: { ...players.yao, role: Role.SOFT_SUPPORT, skill: 40, stability: 0.4, greed: 0.2 },
         pos5: { ...players.seaking, role: Role.HARD_SUPPORT, skill: 18, stability: 0.5, greed: 0.4 },
     },
     qualification: QualificationType.DIRECT_INVITE,
@@ -163,10 +163,10 @@ const okNirvanaInt: Participant = {
     id: "OK.Nirvana.Int",
     name: "OK.Nirvana.Int",
     roster: {
-        pos1: { ...players.fear, role: Role.CARRY, skill: 31, stability: 0.9, greed: 0.8 },
-        pos2: { ...players.lacoste, role: Role.MID, skill: 18, stability: 0.9, greed: 0.6 },
+        pos1: { ...players.fear, role: Role.CARRY, skill: 38, stability: 0.9, greed: 0.8 },
+        pos2: { ...players.lacoste, role: Role.MID, skill: 18, stability: 0.6, greed: 0.6 },
         pos3: { ...players.comeWithMe, role: Role.OFFLANE, skill: 19, stability: 0.5, greed: 0.5 },
-        pos4: { ...players.pajkatt, role: Role.SOFT_SUPPORT, skill: 24, stability: 0.8, greed: 0.3 },
+        pos4: { ...players.pajkatt, role: Role.SOFT_SUPPORT, skill: 34, stability: 0.8, greed: 0.3 },
         pos5: { ...players._1437, role: Role.HARD_SUPPORT, skill: 29, stability: 0.5, greed: 0.3 },
     },
     qualification: QualificationType.DIRECT_INVITE,
@@ -177,7 +177,7 @@ const gosu: Participant = {
     name: "GosuGamers",
     roster: {
         pos1: { ...players.kuroky, role: Role.CARRY, skill: 28, stability: 0.5, greed: 0.9 },
-        pos2: { ...players.mirakel, role: Role.MID, skill: 19, stability: 0.6, greed: 0.5 },
+        pos2: { ...players.mirakel, role: Role.MID, skill: 21, stability: 0.6, greed: 0.5 },
         pos3: { ...players.azen, role: Role.OFFLANE, skill: 18, stability: 0.5, greed: 0.5 },
         pos4: { ...players.kebap, role: Role.SOFT_SUPPORT, skill: 18, stability: 0.7, greed: 0.2 },
         pos5: { ...players.kev, role: Role.HARD_SUPPORT, skill: 19, stability: 0.6, greed: 0.1 },

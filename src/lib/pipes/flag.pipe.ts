@@ -27,7 +27,10 @@ export class FlagPipe implements PipeTransform {
         'romania': 'RO',
         'sweden': 'SE',
         'canada': 'CA',
-        'germany': 'DE'
+        'germany': 'DE',
+        'netherlands': 'NL',
+        'holland': 'NL',
+        'australia': 'AU'
     };
 
   transform(country: string): string {

@@ -98,3 +98,59 @@ export const dread: Player = { id: "Dread", name: "Andrey Golubev", nationality:
 export const arsArt: Player = { id: "Ars-Art", name: "Sergey Revin", nationality: "Russia" };
 export const santa: Player = { id: "Santa", name: "Alexander Koltan", nationality: "Russia" };
 export const god: Player = { id: "God", name: "Sergei Bragin", nationality: "Russia" };
+
+export const burning: Player = { id: "BurNIng", name: "Xu Zhilei", nationality: "China" };
+export const super_: Player = { id: "Super", name: "Xie Junhao", nationality: "China" };
+export const rotk: Player = { id: "rOtk", name: "Bai Fan", nationality: "China" };
+export const zippo: Player = { id: "Zippo", name: "Zhou Xiong", nationality: "China" };
+export const longdd: Player = { id: "LongDD", name: "Huang Xiang", nationality: "China" };
+
+export const yamathe: Player = { id: "YamateH", name: "Ng Wei Poong", nationality: "Malaysia" };
+export const mushi: Player = { id: "Mushi", name: "Chan Litt Binn", nationality: "Malaysia" };
+export const winter: Player = { id: "WinteR", name: "Chai Yee Fung", nationality: "Malaysia" };
+export const xtinct: Player = { id: "XtINcT", name: "Joel Chan Zhan Leong", nationality: "Malaysia" };
+export const ice: Player = { id: "Ice", name: "Chua Chee Cai", nationality: "Malaysia" };
+
+export const blackshatan: Player = { id: "blackShatan", name: "Alex Chang", nationality: "Australia" };
+export const xmusica: Player = { id: "xMusiCa", name: "Justin Yuen", nationality: "Australia" };
+export const bleek: Player = { id: "bLeeK", name: "Scott Jensen", nationality: "Canada" };
+export const godot: Player = { id: "Godot", name: "Darcy Milho Jose", nationality: "Australia" };
+export const snoopy: Player = { id: "Snoopy", name: "Trong Truong", nationality: "Australia" };
+
+export const kingj: Player = { id: "KingJ", name: "Zhou Yang", nationality: "China" };
+export const pct: Player = { id: "PCT", name: "Zhang Miaolong", nationality: "China" };
+export const yyf: Player = { id: "YYF", name: "Jiang Cen", nationality: "China" };
+export const chuan: Player = { id: "ChuaN", name: "Wong Hock Chuan", nationality: "Malaysia" };
+export const sylar: Player = { id: "Sylar", name: "Liu Jiajun", nationality: "China" };
+
+export const akke: Player = { id: "Akke", name: "Joakim Akterhall", nationality: "Sweden" };
+export const bulba: Player = { id: "BuLba", name: "Kanishka Sosale", nationality: "United States" };
+export const loda: Player = { id: "Loda", name: "Jonathan Emanuel Berg", nationality: "Sweden" };
+
+export const xfreedom: Player = { id: "XFreedom", name: "Nicholas Kelvin Ileto Lim", nationality: "Singapore" };
+
+export const mag: Player = { id: "Mag", name: "Andrij Chipenko", nationality: "Ukraine" };
+export const goblak: Player = { id: "Goblak", name: "Artur Kostenko", nationality: "Ukraine" };
+export const funn1k: Player = { id: "Funn1k", name: "Glib Lipatnikov", nationality: "Ukraine" };
+
+export const tc: Player = { id: "TC", name: "Tyler Cook", nationality: "Canada" };
+export const jeyo: Player = { id: "Jeyo", name: "Jio Madayag", nationality: "Canada" };
+export const hannah_montana: Player = { id: "HANNAH_MONTANA", name: "Tony TLklalavera", nationality: "United States" };
+export const fluffstuff: Player = { id: "FLUFFNSTUFF", name: "Brian Lee", nationality: "United States" };
+export const ixmike88: Player = { id: "Ixmike88", name: "Michael Ghannam", nationality: "United States" };
+
+export const silent: Player = { id: "Silent", name: "Airat Gaziev", nationality: "Russia" };
+export const admiration: Player = { id: "Admiration", name: "Igor Kalnysh", nationality: "Russia" };
+export const vigoss: Player = { id: "Vigoss", name: "Ivan Shinkarev", nationality: "Russia" };
+export const pgg: Player = { id: "PGG", name: "Vladimir Anosov", nationality: "Russia" };
+export const bloodangel: Player = { id: "BloodAngel", name: "Vadim Trushkin", nationality: "Russia" };
+
+export const funzil: Player = { id: "Funzil", name: "Thibault Calonne", nationality: "France" };
+export const _7ckngmad: Player = { id: "7ckngMad", name: "Sébastien Félix Albert Debs", nationality: "France" };
+
+export const mu: Player = { id: "Mu", name: "Zhang Pan", nationality: "China" };
+
+export const black: Player = { id: "Black^", name: "Dominik Reitmeier", nationality: "Germany" };
+
+export const singsing: Player = { id: "SingSing", name: "Wehsing Yuen", nationality: "Netherlands" };
+export const sexybamboe: Player = { id: "SexyBamboe", name: "Alaan Faraj", nationality: "Netherlands" };
