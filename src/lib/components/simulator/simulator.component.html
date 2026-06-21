@@ -1,24 +1,56 @@
 <div class="page">
-    <h2>TI Simulator</h2>
-    <p>Simulate a random TI run for your team. Results are randomized but use player strength.</p>
+    <div class="draft-top">
+        <div>
+            <h2 class="title">TI Simulator</h2>
+            <p class="subtitle">Simulate a random TI run for your team. Results are randomized but use player strength.</p>
+        </div>
 
-        @if (team.length===0) {
-            <div>
-                <p>No team yet. Go to Draft to create one.</p>
+        <div class="controls">
+            <div class="mt">
+                <button (click)="runTournament()">Run Tournament</button>
             </div>
-        }
+        </div>
+    </div>
 
-        @if (team.length) {
-            <div>
-                <h3>Your Team</h3>
-                <ol>
-                    @for (p of team; track p.id) {
-                        <li>{{p.name}} — {{p.role}} — Power: {{p.power}}</li>
-                    }
-                </ol>
-                <div class="mt">
-                    <button (click)="runTournament()">Run Tournament</button>
+    <div class="draft-container">
+        <aside class="draft-left">
+            <div class="rolled-header">
+                <h3>Rolled Squad</h3>
+            </div>
+
+            @if (team.length===0) {
+                <div>
+                    <p>No team yet. Go to Draft to create one.</p>
                 </div>
+            }
+
+            @if (team.length) {
+                <div class="squad-list">
+                    <ul>
+                        @for (player of team; track player.role) {
+                            <li class="player-card">
+                                <div class="player-meta">
+                                    <div class="player-role">{{player.role}}</div>
+                                    <div class="player-name">
+                                        @if (player.nationality) { 
+                                            <span class="flag">{{player.nationality | countryToFlag}}</span> 
+                                        }
+                                        @if (player.altId) {
+                                            {{player.altId}}
+                                        } @else {
+                                            {{player.id}}
+                                        }
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </aside>
+
+        <aside class="draft-right">
+            <div class="box-score">
                 @if (result) {
                     <div>
                         <h4>Result</h4>
@@ -26,5 +58,6 @@
                     </div>
                 }
             </div>
-        }
+        </aside>
+    </div>
 </div>

@@ -16,7 +16,7 @@ export interface Competitor extends Player {
   /** Player's alternative ID (if any) */
   altId?: string;
   /** Player's preferred role */
-  role: Role;
+  role: `${Role}`;
   /** Raw skill rating (0-100), how strong a player is */
   skill: number;
   /** 
@@ -43,14 +43,14 @@ export interface Competitor extends Player {
    * Results peak as the team average greed approaches 0.5.
    * Higher or lower values reduce the teams performance.
    * Calculated as follows:
-   *  - Calculate the overall team performance by sum of all players performance divided by 5
+   *  - Calculate the overall team performance by sum of all players performance
    *  - Determine greed factor as: 1 - 2*(|average_greed - 0.5|)
    *  - Adjust overall team performance by multiplying with greed factor
    * 
    * Example:
    *  - Average greed: 0.6
    *  - Greed factor: 1 - 2*(|0.6 - 0.5|) = 0.8
-   *  - Adjusted team performance: 100 * 1.8 = 80
+   *  - Adjusted team performance: 100 * 0.8 = 80
    */
   greed: number;
 }
