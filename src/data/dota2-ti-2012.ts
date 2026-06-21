@@ -182,7 +182,7 @@ const mt: Participant = {
         pos4: { ...players.kebap, role: Role.SOFT_SUPPORT, skill: 19, stability: 0.6, greed: 0.2 },
         pos5: { ...players._7ckngmad, role: Role.HARD_SUPPORT, skill: 30, stability: 0.5, greed: 0.7 },
     },
-    qualification: QualificationType.DIRECT_INVITE,
+    qualification: QualificationType.REGIONAL_QUALIFIER,
 };
 
 const tongfu: Participant = {
@@ -195,7 +195,7 @@ const tongfu: Participant = {
         pos4: { ...players.awoke, role: Role.SOFT_SUPPORT, skill: 45, stability: 0.7, greed: 0.3 },
         pos5: { ...players.sansheng, role: Role.HARD_SUPPORT, skill: 58, stability: 0.8, greed: 0.4 },
     },
-    qualification: QualificationType.DIRECT_INVITE,
+    qualification: QualificationType.REGIONAL_QUALIFIER,
 };
 
 const mouse: Participant = {
@@ -208,7 +208,7 @@ const mouse: Participant = {
         pos4: { ...players._1437, role: Role.SOFT_SUPPORT, skill: 29, stability: 0.5, greed: 0.3 },
         pos5: { ...players.kuroky, role: Role.HARD_SUPPORT, skill: 38, stability: 0.7, greed: 0.8 },
     },
-    qualification: QualificationType.DIRECT_INVITE,
+    qualification: QualificationType.WILD_CARD,
 };
 
 export const dota2Ti2012: Event = {

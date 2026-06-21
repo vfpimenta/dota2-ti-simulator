@@ -176,7 +176,53 @@ ol, ul { margin-left: 1.25rem; padding-left: 0; }
 
 /* Right: box score and team list */
 .draft-right { padding: 0 0.25rem; }
-.box-score { background: #f6f0e6; padding: 1rem; border: 1px solid #e4dacb; border-radius: 4px; }
+.box-score {
+  background: #f6f0e6;
+  padding: 1rem;
+  border: 1px solid #e4dacb;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+
+  /* Scoreboard-style table */
+  table {
+    width: 30%;
+    border-collapse: collapse;
+    background: #f6efde; /* light panel */
+    color: #1f1f1f;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(15, 15, 15, 0.06);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  table tr { border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+  table td {
+    padding: 0.58rem 0.75rem;
+    font-size: 0.95rem;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: inherit;
+    border-right: 1px solid rgba(0,0,0,0.06);
+  }
+
+  table td:first-child {
+    width: 12px;
+    color: #9a6f2b;
+    font-weight: 800;
+    text-align: left;
+  }
+
+  table td:nth-child(2) { text-align: left; }
+  table td:nth-child(3), table td:nth-child(4) {
+    text-align: center;
+    width: 36px;
+    font-weight: 700;
+  }
+
+  table tr:last-child { border-bottom: none; }
+}
 .box-header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.75rem; }
 .score { font-size: 2.25rem; font-weight:800; color:#111; }
 .attack { text-align:right; color:#d24b3a; font-weight:700; }

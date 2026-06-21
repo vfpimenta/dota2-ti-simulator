@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TeamService } from '../../services/team.service';
 import { Competitor } from '../../models/player.model';
 import { FlagPipe } from '../../pipes/flag.pipe';
+import { BO2_GroupParticipant, Participant, QualificationType } from '../../models/team.model';
 
 @Component({
   standalone: true,
@@ -14,11 +15,40 @@ import { FlagPipe } from '../../pipes/flag.pipe';
 export class SimulatorComponent implements OnInit {
   private teamService: TeamService = inject(TeamService);
 
-  team: Competitor[] = [];
-  result: string | null = null;
+  draftedPlayers: Competitor[] = [];
+  draftedTeam?: BO2_GroupParticipant;
+  competition: BO2_GroupParticipant[] = [];
 
   ngOnInit() {
-    this.team = this.teamService.getTeam() || this.getFallbackTeam();
+    this.draftedPlayers = this.teamService.getDraftedTeam() || this.getFallbackTeam();
+    this.draftedTeam = this.buildParticipant(this.draftedPlayers);
+    this.competition = this.teamService.randomPicks(7).map((e) => {
+      return {
+        ...e.participant,
+        id: `${e.event.id} ${e.participant.id}`,
+        series: {
+          wins: 0,
+          ties: 0,
+          losses: 0,
+        },
+        games: {
+          wins: 0,
+          losses: 0
+        }
+      }
+    });
+    this.competition.push({
+      ...this.draftedTeam,
+      series: {
+        wins: 0,
+        ties: 0,
+        losses: 0,
+      },
+      games: {
+        wins: 0,
+        losses: 0
+      }
+    });
   }
 
   getFallbackTeam(): Competitor[] {
@@ -31,27 +61,31 @@ export class SimulatorComponent implements OnInit {
     ];
   }
 
-  /**
-   * Get the performance of the team for a specific match.
-   * This function calculates the overall team performance based on individual player skills,
-   * taking into account their stability and greed factors.
-   */
-  getPerformance() {
-    const teamSkill = this.team.map(p => {
-      const variance = {
-        lowerBound: 1-(1-p.stability),
-        upperBound: 1+(1-p.stability)
+  buildParticipant(players: Competitor[]): BO2_GroupParticipant {
+    return {
+      id: 'Your Team',
+      name: 'Your Team',
+      qualification: QualificationType.WILD_CARD,
+      roster: {
+        pos1: players[0],
+        pos2: players[1],
+        pos3: players[2],
+        pos4: players[3],
+        pos5: players[4]
+      },
+      series: {
+        wins: 0,
+        ties: 0,
+        losses: 0,
+      },
+      games: {
+        wins: 0,
+        losses: 0
       }
-      // Generate a random value within the variance bounds
-      const randomValue = Math.random() * (variance.upperBound - variance.lowerBound) + variance.lowerBound;
-      return p.skill * randomValue;
-    }).reduce((a, b) => a + b, 0);
-    const averageGreed = this.team.reduce((a, b) => a + b.greed, 0) / this.team.length;
-
-    return teamSkill * Math.max((1 - 2 * Math.abs(averageGreed - 0.5)), 0.5);
+    }
   }
 
   runTournament() {
-    this.result = this.getPerformance().toString();
+    
   }
 }

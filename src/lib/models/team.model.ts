@@ -8,7 +8,7 @@ export interface Team {
 export enum QualificationType {
   DIRECT_INVITE = "Direct Invite",
   REGIONAL_QUALIFIER = "Regional Qualifier",
-  OPEN_QUALIFIER = "Open Qualifier",
+  WILD_CARD = "Wild Card",
 }
 
 /**
@@ -24,4 +24,16 @@ export interface Participant extends Team {
     };
     coaches?: Player[];
     qualification: QualificationType;
+}
+
+export interface BO2_GroupParticipant extends Participant {
+  series: {
+    wins: number;
+    ties: number;
+    losses: number;
+  };
+  games: {
+    wins: number;
+    losses: number;
+  };
 }

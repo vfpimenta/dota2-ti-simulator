@@ -15,19 +15,17 @@
     <div class="draft-container">
         <aside class="draft-left">
             <div class="rolled-header">
-                <h3>Rolled Squad</h3>
+                <h3>Your Team</h3>
             </div>
 
-            @if (team.length===0) {
+            @if (!draftedTeam) {
                 <div>
                     <p>No team yet. Go to Draft to create one.</p>
                 </div>
-            }
-
-            @if (team.length) {
+            } @else {
                 <div class="squad-list">
                     <ul>
-                        @for (player of team; track player.role) {
+                        @for (player of draftedPlayers; track player.role) {
                             <li class="player-card">
                                 <div class="player-meta">
                                     <div class="player-role">{{player.role}}</div>
@@ -51,12 +49,20 @@
 
         <aside class="draft-right">
             <div class="box-score">
-                @if (result) {
-                    <div>
-                        <h4>Result</h4>
-                        <p>{{result}}</p>
-                    </div>
-                }
+                <div class="box-header">
+                    <div class="score">Group Stage</div>
+                </div>
+
+                <table>
+                    @for(team of competition; track team; let idx = $index) {
+                        <tr>
+                            <td>{{ idx+1 }}.</td>
+                            <td>{{ team.id }}</td>
+                            <td>{{ team.series.wins }}-{{ team.series.ties }}-{{ team.series.losses }}</td>
+                            <td>{{ team.games.wins }}-{{ team.games.losses }}</td>
+                        </tr>
+                    }
+                </table>
             </div>
         </aside>
     </div>
