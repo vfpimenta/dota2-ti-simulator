@@ -37,3 +37,12 @@ export interface BO2_GroupParticipant extends Participant {
     losses: number;
   };
 }
+
+export interface BO2_Series {
+  team1: BO2_GroupParticipant;
+  team2: BO2_GroupParticipant;
+  score: {
+    team1: number;
+    team2: number;
+  }
+}

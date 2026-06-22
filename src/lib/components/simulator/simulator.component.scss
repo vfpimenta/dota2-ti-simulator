@@ -184,7 +184,7 @@ ol, ul { margin-left: 1.25rem; padding-left: 0; }
   position: relative;
   overflow: hidden;
 
-  /* Scoreboard-style table */
+  /* Scoreboard-style table (standings) */
   table {
     width: 30%;
     border-collapse: collapse;
@@ -197,6 +197,32 @@ ol, ul { margin-left: 1.25rem; padding-left: 0; }
   }
 
   table tr { border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+  /* Highlighting: top 4 = qualified (green), bottom 4 = eliminated (red).
+     Apply background to TDs directly so the color shows over the entire row. */
+  table tr:nth-child(-n+4) td {
+    background-color: rgba(46, 204, 113, 0.12); /* visible but still subtle */
+    transition: background-color 120ms ease;
+  }
+  table tr:nth-child(-n+4) td:first-child {
+    color: rgba(27,94,32,0.95); /* stronger green for the position number */
+    font-weight: 800;
+  }
+  table tr:nth-child(-n+4) td {
+    border-right-color: rgba(46, 204, 113, 0.18);
+  }
+
+  table tr:nth-last-child(-n+4) td {
+    background-color: rgba(231, 76, 60, 0.10); /* visible subtle red */
+    transition: background-color 120ms ease;
+  }
+  table tr:nth-last-child(-n+4) td:first-child {
+    color: rgba(127,29,29,0.95); /* stronger red for the position number */
+    font-weight: 800;
+  }
+  table tr:nth-last-child(-n+4) td {
+    border-right-color: rgba(231, 76, 60, 0.18);
+  }
 
   table td {
     padding: 0.58rem 0.75rem;
@@ -225,12 +251,62 @@ ol, ul { margin-left: 1.25rem; padding-left: 0; }
 }
 .box-header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.75rem; }
 .score { font-size: 2.25rem; font-weight:800; color:#111; }
-.attack { text-align:right; color:#d24b3a; font-weight:700; }
-.attack .value { font-size:1.3rem; margin-right:0.4rem; }
+.loss { text-align:right; color:#d24b3a; font-weight:700; }
+.loss .value { font-size:1.3rem; margin-right:0.4rem; }
+
+.win { text-align:right; color:#58d23a; font-weight:700; }
+.win .value { font-size:1.3rem; margin-right:0.4rem; }
 
 .team-list h3 { margin: 0 0 0.5rem 0; }
 .team-list ol { margin: 0; padding-left: 1rem; }
 .team-list li { margin-bottom: 0.5rem; }
+
+/* New layout for standings + matches inside the box-score */
+.box-content {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.box-content .standings {
+  /* keep original table look but reserve a fixed column width so matches can expand */
+  width: auto;
+  min-width: 340px;
+}
+
+.matches-list {
+  /* fill remaining tile area and allow multiple columns */
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 0.5rem;
+  background: transparent;
+  align-content: start;
+}
+
+.matches-list .match {
+  display: grid;
+  grid-template-columns: 1fr 96px 1fr; /* fixed center column so score aligns */
+  align-items: center;
+  background: #fff7ea; /* slightly different panel for matches */
+  padding: 0.35rem 0.6rem; /* tight padding */
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(15,15,15,0.04);
+  min-height: 44px; /* sensible row height */
+  font-size: 0.92rem; /* same as before */
+  line-height: 1.1;
+}
+
+.matches-list .team { font-weight: 700; color: #1f1f1f; padding: 0 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.matches-list .team-right { text-align: right; }
+
+.matches-list .score { justify-self: center; text-align: center; font-weight: 800; color: #9a6f2b; }
+.matches-list .score .val { display: inline-block; min-width: 14px; }
+.matches-list .score .sep { margin: 0 6px; color: rgba(0,0,0,0.45); }
+
+/* Make sure these match styles don't affect the main standings table */
+.box-score .standings td { padding: 0.58rem 0.75rem; border-right: 1px solid rgba(0,0,0,0.06); }
 
 /* Responsive */
 @media (max-width: 980px) {

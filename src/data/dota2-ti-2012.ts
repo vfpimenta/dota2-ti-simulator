@@ -56,7 +56,7 @@ const al: Participant = {
 };
 
 const ehome: Participant = {
-    id: "EHOM",
+    id: "EHOME",
     name: "EHOME",
     roster: {
         pos1: { ...players.lanm, role: Role.CARRY, skill: 76, stability: 0.9, greed: 0.4 },

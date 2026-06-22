@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { TeamService } from '../../services/team.service';
+import { TournamentService } from '../../services/tournament.service';
 import { Competitor, Player } from '../../models/player.model';
 import { FlagPipe } from '../../pipes/flag.pipe';
 import { Participant } from '../../models/team.model';
@@ -15,7 +15,7 @@ import { Participant } from '../../models/team.model';
   styleUrls: ['./draft.component.scss']
 })
 export class DraftComponent implements OnInit {
-  private teamService: TeamService = inject(TeamService);
+  private tournamentService: TournamentService = inject(TournamentService);
   private router: Router = inject(Router);
 
   squad: Competitor[] = [];
@@ -50,7 +50,7 @@ export class DraftComponent implements OnInit {
 
   private syncTeamArrayFromSlots() {
     this.team = this.teamSlots.filter(s => s.player).map(s => s.player) as Competitor[];
-    this.teamService.setDraftedTeam(this.team);
+    this.tournamentService.setDraftedTeam(this.team);
   }
 
   rollSquad() {
@@ -66,7 +66,7 @@ export class DraftComponent implements OnInit {
     this.pickedFromCurrent = false;
 
     // Pick a random participant team from the historical TI2011 event
-    const {event, participant} = this.teamService.randomPick();
+    const {event, participant} = this.tournamentService.randomPick();
 
     // store team name/year for the UI
     this.rolledTeamName = participant.name;
@@ -117,7 +117,7 @@ export class DraftComponent implements OnInit {
   }
 
   saveTeam() {
-    this.teamService.setDraftedTeam(this.team);
+    this.tournamentService.setDraftedTeam(this.team);
     this.router.navigate(['/simulator']);
   }
 }

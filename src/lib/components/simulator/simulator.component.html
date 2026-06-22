@@ -7,7 +7,20 @@
 
         <div class="controls">
             <div class="mt">
-                <button (click)="runTournament()">Run Tournament</button>
+                @switch (tournamentState()) {
+                    @case ('BeforeGroup')
+                    @case ('RunningGroup') {
+                        <button (click)="runGroupStage()" [disabled]="tournamentState() === 'RunningGroup'">Run Group Stage</button>
+                    }
+                    @case ('AfterGroup') {
+                        @if (groupWin()) {
+                            <button>Go to Playoffs</button>
+                        } @else {
+                            <button (click)="back()">Back to Draft</button>
+                        }
+                        
+                    }
+                }
             </div>
         </div>
     </div>
@@ -51,18 +64,41 @@
             <div class="box-score">
                 <div class="box-header">
                     <div class="score">Group Stage</div>
+                    @if(tournamentState() === 'AfterGroup') {
+                        @if (groupWin()) {
+                            <div class="win"><span class="label">You're qualified to playoffs!!</span></div>
+                        } @else {
+                            <div class="loss"><span class="label">You got Eliminated!</span></div>
+                        }
+                    }
                 </div>
 
-                <table>
-                    @for(team of competition; track team; let idx = $index) {
-                        <tr>
-                            <td>{{ idx+1 }}.</td>
-                            <td>{{ team.id }}</td>
-                            <td>{{ team.series.wins }}-{{ team.series.ties }}-{{ team.series.losses }}</td>
-                            <td>{{ team.games.wins }}-{{ team.games.losses }}</td>
-                        </tr>
-                    }
-                </table>
+                <div class="box-content">
+                  <table class="standings">
+                      @for(team of competition(); track team; let idx = $index) {
+                          <tr>
+                              <td>{{ idx+1 }}.</td>
+                              <td>{{ team.id }} [{{ team.roster.pos1.skill+team.roster.pos2.skill+team.roster.pos3.skill+team.roster.pos4.skill+team.roster.pos5.skill }}]</td>
+                              <td>{{ team.series.wins }}-{{ team.series.ties }}-{{ team.series.losses }}</td>
+                              <td>{{ team.games.wins }}-{{ team.games.losses }}</td>
+                          </tr>
+                      }
+                  </table>
+
+                  <div class="matches-list">
+                      @for (match of groupMatches(); track $index) {
+                          <div class="match">
+                              <div class="team team-left">{{ match.team1.id }}</div>
+                              <div class="score">
+                                  <span class="val">{{ match.score.team1 }}</span>
+                                  <span class="sep">-</span>
+                                  <span class="val">{{ match.score.team2 }}</span>
+                              </div>
+                              <div class="team team-right">{{ match.team2.id }}</div>
+                          </div>
+                      }
+                  </div>
+                </div>
             </div>
         </aside>
     </div>
